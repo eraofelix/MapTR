@@ -13,7 +13,10 @@ from mmdet3d.utils import collect_env, get_root_logger
 from mmdet3d.apis import single_gpu_test
 from mmdet3d.datasets import build_dataset
 import sys
-sys.path.append('')
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(FILE_PATH)
+sys.path.append(os.path.join(FILE_PATH, "../"))
+sys.path.append(os.path.join(FILE_PATH, "../../"))
 from projects.mmdet3d_plugin.datasets.builder import build_dataloader
 from mmdet3d.models import build_model
 from mmdet.apis import set_random_seed
