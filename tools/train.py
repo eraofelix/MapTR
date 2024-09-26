@@ -29,6 +29,11 @@ from mmseg import __version__ as mmseg_version
 
 from mmcv.utils import TORCH_VERSION, digit_version
 
+import sys
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(FILE_PATH)
+sys.path.append(os.path.join(FILE_PATH, "../"))
+sys.path.append(os.path.join(FILE_PATH, "../../"))
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
@@ -123,7 +128,7 @@ def main():
                 for m in _module_dir[1:]:
                     _module_path = _module_path + '.' + m
                 print(_module_path)
-                plg_lib = importlib.import_module(_module_path)
+                # plg_lib = importlib.import_module(_module_path)
             else:
                 # import dir is the dirpath for the config file
                 _module_dir = os.path.dirname(args.config)

@@ -736,12 +736,12 @@ class VectorizedLocalMap(object):
             if valid_outgoing_num > 1:
                 junction_pts_list.append(tuple(end_pt))
 
-        roots = (v for v, d in pts_G.in_degree() if d == 0)
-        leaves = [v for v, d in pts_G.out_degree() if d == 0]
+        # roots = (v for v, d in pts_G.in_degree() if d == 0)
+        # leaves = [v for v, d in pts_G.out_degree() if d == 0]
         all_paths = []
-        for root in roots:
-            paths = nx.all_simple_paths(pts_G, root, leaves)
-            all_paths.extend(paths)
+        # for root in roots:
+        #     paths = nx.all_simple_paths(pts_G, root, leaves)
+        #     all_paths.extend(paths)
 
         final_centerline_paths = []
         for path in all_paths:
@@ -924,16 +924,25 @@ args = parser.parse_args()
 
 
 if __name__ == '__main__':
-    train_version = f'{args.version}-trainval'
-    nuscenes_data_prep(
-        root_path=args.root_path,
-        can_bus_root_path=args.canbus,
-        info_prefix=args.extra_tag,
-        version=train_version,
-        dataset_name='NuScenesDataset',
-        out_dir=args.out_dir,
-        max_sweeps=args.max_sweeps)
-    test_version = f'{args.version}-test'
+    # train_version = f'{args.version}-trainval'
+    # nuscenes_data_prep(
+    #     root_path=args.root_path,
+    #     can_bus_root_path=args.canbus,
+    #     info_prefix=args.extra_tag,
+    #     version=train_version,
+    #     dataset_name='NuScenesDataset',
+    #     out_dir=args.out_dir,
+    #     max_sweeps=args.max_sweeps)
+    # test_version = f'{args.version}-test'
+    # nuscenes_data_prep(
+    #     root_path=args.root_path,
+    #     can_bus_root_path=args.canbus,
+    #     info_prefix=args.extra_tag,
+    #     version=test_version,
+    #     dataset_name='NuScenesDataset',
+    #     out_dir=args.out_dir,
+    #     max_sweeps=args.max_sweeps)
+    test_version = f'{args.version}-mini'
     nuscenes_data_prep(
         root_path=args.root_path,
         can_bus_root_path=args.canbus,
